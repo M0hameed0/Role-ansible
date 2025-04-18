@@ -1,0 +1,24 @@
+---
+- name: installer_dependances_npm
+  command: npm install
+  args:
+    chdir: /opt/quiz-ansible
+
+- name: compiler_app
+  command: npm run build
+  args:
+    chdir: /opt/quiz-ansible
+
+- name: installer_serve
+  npm:
+    name: serve
+    global: yes
+    state: present
+
+- name: lancer_app
+  shell: serve -s dist -l 3000
+  args:
+    chdir: /opt/quiz-ansible
+  async: 3600
+  poll: 0
+

@@ -1,0 +1,39 @@
+---
+- name: Mettre à jour les paquets
+  dnf:
+    name: '*'
+    state: latest
+    update_cache: yes
+
+- name: Installer procps-ng
+  dnf:
+    name: procps-ng
+    state: present
+
+- name: Télécharger le script d'installation Node.js 23
+  get_url:
+    url: https://rpm.nodesource.com/setup_23.x
+    dest: /tmp/setup_node.sh
+    mode: '0755'
+
+- name: Exécuter le script Node.js
+  command: bash /tmp/setup_node.sh
+
+- name: Installer Node.js
+  dnf:
+    name: nodejs
+    state: present
+
+- name: Copier les fichiers de l'application
+  copy:
+    src: /root/config/quiz-ansible/
+    dest: /opt/quiz-ansible/
+    mode: '0777'
+    owner: root
+    group: root
+  notify:
+    - installer_dependances_npm
+    - compiler_app
+    - installer_serve
+    - lancer_app
+

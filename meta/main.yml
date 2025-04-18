@@ -1,0 +1,11 @@
+---
+galaxy_info:
+  author: ton_nom
+  description: Déploiement de l'app Node.js quiz-ansible
+  license: MIT
+  min_ansible_version: 2.9
+  platforms:
+    - name: EL
+      versions:
+        - 8
+

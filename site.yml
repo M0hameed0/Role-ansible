@@ -1,0 +1,7 @@
+---
+- name: Déployer quiz-ansible app sur Rocky Linux
+  hosts: rocky
+  become: true
+
+  roles:
+    - app
