@@ -1,11 +1,11 @@
 ---
 galaxy_info:
-  author: ton_nom
+  author: Mohamed
   description: Déploiement de l'app Node.js quiz-ansible
   license: MIT
   min_ansible_version: 2.9
   platforms:
-    - name: EL
+    - name: Mohamed
       versions:
         - 8
 
